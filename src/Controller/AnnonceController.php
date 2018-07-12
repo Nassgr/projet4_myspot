@@ -18,9 +18,9 @@ class AnnonceController extends Controller
     /**
      * @Route("/", name="annonce_view", methods="GET")
      */
-    public function index(AnnonceRepository $annonceRepository): Response
+    public function index(AnnonceRepository $annonces): Response
     {
-        return $this->render('annonce/public/annonce.html.twig', ['annonces' => $annonceRepository->findAll()]);
+        return $this->render('annonce/public/annonce.html.twig', ['annonces' => $annonces->findAll()]);
     }
 
 

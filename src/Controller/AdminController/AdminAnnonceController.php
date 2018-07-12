@@ -24,9 +24,11 @@ class AdminAnnonceController extends Controller
     /**
      * @Route("/", name="annonce_admin_index", methods="GET")
      */
-    public function index(AnnonceRepository $annonceRepository): Response
+    public function index(AnnonceRepository $annonce): Response
     {
-        return $this->render('annonce/index.html.twig', ['annonces' => $annonceRepository->findAll()]);
+        return $this->render('annonce/index.html.twig', [
+            'annonces' => $annonce->findAll()
+        ]);
     }
 
     /**
@@ -43,7 +45,7 @@ class AdminAnnonceController extends Controller
             $em->persist($annonce);
             $em->flush();
 
-            return $this->redirectToRoute('annonce_index');
+            return $this->redirectToRoute('annonce_admin_index');
         }
 
         return $this->render('annonce/new.html.twig', [
@@ -71,7 +73,7 @@ class AdminAnnonceController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('annonce_edit', ['id' => $annonce->getId()]);
+            return $this->redirectToRoute('annonce_admin_index', ['id' => $annonce->getId()]);
         }
 
         return $this->render('annonce/edit.html.twig', [
@@ -91,7 +93,7 @@ class AdminAnnonceController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('annonce_index');
+        return $this->redirectToRoute('annonce_admin_index');
     }
 
 }
