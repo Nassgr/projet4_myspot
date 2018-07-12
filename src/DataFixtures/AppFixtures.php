@@ -27,14 +27,14 @@ class AppFixtures extends Fixture
     {
         foreach ($this->getUserData() as [$fullname, $username, $password, $email, $roles]) {
             $user = new User();
-            $user->setFullName($fullname);
+            $user->setFullname($fullname);
             $user->setUsername($username);
             $user->setPassword($this->passwordEncoder->encodePassword($user, $password));
             $user->setEmail($email);
             $user->setRoles($roles);
 
             $manager->persist($user);
-            $this->addReference($username, $user);
+            $this->addReference($fullname, $user);
         }
 
         $manager->flush();
@@ -44,9 +44,9 @@ class AppFixtures extends Fixture
     {
         return [
             // $userData = [$fullname, $username, $password, $email, $roles];
-            ['Jane Doe', 'jane_admin', 'kitten', 'jane_admin@symfony.com', ['ROLE_ADMIN']],
-            ['Tom Doe', 'tom_admin', 'kitten', 'tom_admin@symfony.com', ['ROLE_ADMIN']],
-            ['John Doe', 'john_user', 'kitten', 'john_user@symfony.com', ['ROLE_USER']],
+            ['Jane Doez', 'jane_admin', 'kitten', 'jane_admin@symfony.com', ['ROLE_ADMIN']],
+            ['Tom Doae', 'tom_admin', 'kitten', 'tom_admin@symfony.com', ['ROLE_ADMIN']],
+            ['John Doue', 'john_user', 'kitten', 'john_user@symfony.com', ['ROLE_USER']],
         ];
     }
 }

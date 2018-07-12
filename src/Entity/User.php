@@ -3,11 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -19,12 +20,13 @@ class User
     /**
      * @ORM\Column(type="string", length=45)
      */
-    private $firstname;
+    private $fullname;
 
     /**
      * @ORM\Column(type="string", length=45)
+     *
      */
-    private $lastname;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -39,33 +41,33 @@ class User
     /**
      * @ORM\Column(type="json")
      */
-    private $role;
+    private $roles;
 
     public function getId()
     {
         return $this->id;
     }
 
-    public function getFirstname(): ?string
+    public function getFullname(): ?string
     {
-        return $this->firstname;
+        return $this->fullname;
     }
 
-    public function setFirstname(string $firstname): self
+    public function setFullname(string $fullname): self
     {
-        $this->firstname = $firstname;
+        $this->fullname = $fullname;
 
         return $this;
     }
 
-    public function getLastname(): ?string
+    public function getUsername(): ?string
     {
-        return $this->lastname;
+        return $this->username;
     }
 
-    public function setLastname(string $lastname): self
+    public function setUsername(string $username): self
     {
-        $this->lastname = $lastname;
+        $this->username = $username;
 
         return $this;
     }
@@ -94,9 +96,9 @@ class User
         return $this;
     }
 
-    public function getRole(): array
+    public function getRoles(): array
     {
-        $roles = $this->role;
+        $roles = $this->roles;
 
         if (empty($roles)) {
             $roles[] = 'ROLE_USER';
@@ -122,7 +124,9 @@ class User
      */
     public function eraseCredentials(): void
     {
-         $this->plainPassword = null;
+        // Nous n'avons pas besoin de cette methode car nous n'utilions pas de plainPassword
+        // Mais elle est obligatoire car comprise dans l'interface UserInterface
+        // $this->plainPassword = null;
     }
 
     /**
