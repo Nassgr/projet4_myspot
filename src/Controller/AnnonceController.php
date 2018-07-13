@@ -16,75 +16,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class AnnonceController extends Controller
 {
     /**
-     * @Route("/", name="annonce_index", methods="GET")
+     * @Route("/", name="annonce_view", methods="GET")
      */
-    public function index(AnnonceRepository $annonceRepository): Response
+    public function index(AnnonceRepository $annonces): Response
     {
-        return $this->render('annonce/index.html.twig', ['annonces' => $annonceRepository->findAll()]);
+        return $this->render('annonce/public/annonce.html.twig', ['annonces' => $annonces->findAll()]);
     }
 
-    /**
-     * @Route("/new", name="annonce_new", methods="GET|POST")
-     */
-    public function new(Request $request): Response
-    {
-        $annonce = new Annonce();
-        $form = $this->createForm(AnnonceType::class, $annonce);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($annonce);
-            $em->flush();
-
-            return $this->redirectToRoute('annonce_index');
-        }
-
-        return $this->render('annonce/new.html.twig', [
-            'annonce' => $annonce,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="annonce_show", methods="GET")
-     */
-    public function show(Annonce $annonce): Response
-    {
-        return $this->render('annonce/show.html.twig', ['annonce' => $annonce]);
-    }
-
-    /**
-     * @Route("/{id}/edit", name="annonce_edit", methods="GET|POST")
-     */
-    public function edit(Request $request, Annonce $annonce): Response
-    {
-        $form = $this->createForm(AnnonceType::class, $annonce);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('annonce_edit', ['id' => $annonce->getId()]);
-        }
-
-        return $this->render('annonce/edit.html.twig', [
-            'annonce' => $annonce,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="annonce_delete", methods="DELETE")
-     */
-    public function delete(Request $request, Annonce $annonce): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$annonce->getId(), $request->request->get('_token'))) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($annonce);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('annonce_index');
-    }
 }

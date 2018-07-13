@@ -11,16 +11,19 @@
         <nav class="links">
             <ul>
                 <li><a href="#">Déposer une annonce</a></li>
-                <li><a href="#">Voir les annonces</a></li>
+                <li><a href="{{ path('annonce_view') }}">Voir les annonces</a></li>
                 <li><a href="#">Mes annonces</a></li>
             </ul>
         </nav>
         <nav class="main">
             <ul>
                 <li class="search">
+                    <a class="fa-user" href="{{ path('security_login')}}">Connexion</a>
+                </li>
+                <li class="search">
                     <a class="fa-search" href="#search">Rechercher</a>
                     <form id="search" method="get" action="#">
-                        <input type="text" name="query" placeholder="Search" />
+                        <input type="text" name="query" placeholder="Rechercher" />
                     </form>
                 </li>
                 <li class="menu">
