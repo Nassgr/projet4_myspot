@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class AnnonceType extends AbstractType
 {
@@ -36,7 +37,10 @@ class AnnonceType extends AbstractType
             ->add('description', TextareaType::class)
             ->add('price', IntegerType::class)
             ->add('city', TextType::class)
-        ;
+            ->add('imageFile', VichImageType::class, array(
+                'label' => 'Photo de votre produit',
+                'required' =>false,
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)
