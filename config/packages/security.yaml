@@ -17,7 +17,7 @@ security:
 
             # La connexion n'est pas requise sur toutes les pages
             # par exemple la page d'accueil
-            anonymous: true
+            anonymous: ~
 
             form_login:
                 # Le nom de la route de la page de connexion
@@ -35,7 +35,7 @@ security:
                 # La route où se trouve le process de deconnexion
                 path: security_logout
                 # La route sur laquelle doit etre rediriger l'utilisateur apres une deconnexion
-                target: index
+                target: home
 
     access_control:
         # Les regles de securité
