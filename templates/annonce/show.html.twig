@@ -3,44 +3,46 @@
 {% block title %}Annonce{% endblock %}
 
 {% block body %}
+<div class="container">
     <h1>Annonce</h1>
 
-    <table class="table">
+    <table class="table table-striped">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ annonce.id }}</td>
-            </tr>
-            <tr>
-                <th>Categorie</th>
-                <td>{{ annonce.categorie }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ annonce.type }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ annonce.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ annonce.description }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ annonce.price }}</td>
-            </tr>
-            <tr>
-                <th>City</th>
-                <td>{{ annonce.city }}</td>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <td>{{ annonce.id }}</td>
+        </tr>
+        <tr>
+            <th>Catégorie</th>
+            <td>{{ annonce.categorie }}</td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>{{ annonce.type }}</td>
+        </tr>
+        <tr>
+            <th>Titre</th>
+            <td>{{ annonce.title }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ annonce.description }}</td>
+        </tr>
+        <tr>
+            <th>Prix</th>
+            <td>{{ annonce.price }}</td>
+        </tr>
+        <tr>
+            <th>Ville</th>
+            <td>{{ annonce.city }}</td>
+        </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('annonce_admin_index') }}">back to list</a>
+    <a class="btn btn-outline-secondary" href="{{ path('annonce_admin_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('annonce_admin_edit', {'id': annonce.id}) }}">edit</a>
+    <a class="btn btn-outline-secondary" href="{{ path('annonce_admin_edit', {'id': annonce.id}) }}">Modifier</a>
 
     {{ include('annonce/_delete_form.html.twig') }}
+</div>
 {% endblock %}

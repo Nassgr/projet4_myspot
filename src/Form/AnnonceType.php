@@ -19,17 +19,17 @@ class AnnonceType extends AbstractType
             ->add('categorie', ChoiceType::class, array(
                 'placeholder' => 'Choisissez une catégorie',
                 'choices' => array(
-                        'Voitures' => 'voiture',
-                        'Vêtements' => 'vetements',
-                        'Téléphonie' => 'telephone',
-                        'Informatique' => 'informatique',
-                        'Console & Jeux vidéos' => 'console',)
+                        'Voitures' => 'Voiture',
+                        'Vêtements' => 'Vetements',
+                        'Téléphonie' => 'Telephone',
+                        'Informatique' => 'Informatique',
+                        'Console & Jeux vidéos' => 'Console',)
             ))
             ->add('type', ChoiceType::class, array(
                 'placeholder' => 'Choisissez une catégorie',
                 'choices' => array(
-                    'Particulier' => 'particulier',
-                    'Professionnel' => 'pro',
+                    'Particulier' => 'Particulier',
+                    'Professionnel' => 'Pro',
                 ),
             ))
             ->add('title', TextType::class)
