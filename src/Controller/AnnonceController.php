@@ -23,5 +23,27 @@ class AnnonceController extends Controller
         return $this->render('annonce/public/annonce.html.twig', ['annonces' => $annonces->findAll()]);
     }
 
+    /**
+     * @Route("/new", name="annonce_new", methods="GET|POST")
+     */
+    public function new(Request $request): Response
+    {
+        $annonce = new Annonce();
+        $form = $this->createForm(AnnonceType::class, $annonce);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($annonce);
+            $em->flush();
+
+            return $this->redirectToRoute('annonce_admin_index');
+        }
+
+        return $this->render('annonce/public/createAnnonce.html.twig', [
+            'annonce' => $annonce,
+            'form' => $form->createView(),
+        ]);
+    }
 
 }

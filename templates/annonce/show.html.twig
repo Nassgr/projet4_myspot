@@ -38,7 +38,7 @@
         </tr>
         <tr>
             <th>Photo</th>
-            <td>{{ annonce.imageName }}</td>
+            <td><img src="{{ vich_uploader_asset(annonce, 'imageFile') }}"></td>
         </tr>
         </tbody>
     </table>

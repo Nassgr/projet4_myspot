@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Déposer une annonce{% endblock %}
+
+{% block body %}
+    <div class="container form-control pl-5 pr-5 mt-5 mb-5">
+        <h1 class="mt-5">Déposer une annonce</h1>
+
+        {{ include('annonce/_form.html.twig') }}
+
+        <a class="btn btn-outline-secondary mb-5" href="{{ path('index') }}">Retour à l'accueil</a>
+    </div>
+{% endblock %}

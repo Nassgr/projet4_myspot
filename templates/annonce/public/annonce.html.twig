@@ -1,94 +1,30 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 {% block body %}
-    <body class="single is-preload">
-
-    <!-- Wrapper -->
-    <div id="wrapper">
-
-        <!-- Header -->
-        <header id="header">
-            <h1><a href="#">My Spot</a></h1>
-            <nav class="links">
-                <ul>
-                    <li><a href="#">Déposer une annonce</a></li>
-                    <li><a href="#">Voir les annonces</a></li>
-                    <li><a href="#">Mes annonces</a></li>
-                </ul>
-            </nav>
-            <nav class="main">
-                <ul>
-                    <li class="search">
-                        <a class="fa-search" href="#search">Rechercher</a>
-                        <form id="search" method="get" action="#">
-                            <input type="text" name="query" placeholder="Search" />
-                        </form>
-                    </li>
-                    <li class="menu">
-                        <a class="fa-bars" href="#menu">Menu</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-
-        <!-- Menu -->
-        <section id="menu">
-
-            <!-- Search -->
-            <section>
-                <form class="search" method="get" action="#">
-                    <input type="text" name="query" placeholder="Search" />
-                </form>
-            </section>
-
-            <!-- Links -->
-            <section>
-                <ul class="links">
-                    <li>
-                        <a href="#">
-                            <h3>Lorem ipsum</h3>
-                            <p>Feugiat tempus veroeros dolor</p>
-                        </a>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- Actions -->
-            <section>
-                <ul class="actions stacked">
-                    <li><a href="#" class="button large fit">Log In</a></li>
-                </ul>
-            </section>
-
-        </section>
-
         <!-- Main -->
         <div id="main">
-
             <!-- Post -->
             {% for annonce in annonces %}
-            <article class="post">
+            <article class="post mt-5">
                 <header>
                     <div class="title">
                         <h2><a href="#">{{ annonce.title }}</a></h2>
                         <p>{{ annonce.categorie }}</p>
                     </div>
                     <div class="meta">
-                        <time class="published" datetime="2015-11-01">November 1, 2015</time>
+                        <time class="published" datetime="2015-11-01">01/04/2018</time>
                         <a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
                     </div>
                 </header>
-                <span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
+                <span class="image featured"><img src="{{ vich_uploader_asset(annonce, 'imageFile') }}" alt="Photo du produit" /></span>
                 <p>{{ annonce.description }}</p>
                 <footer>
                     <ul class="stats">
-                        <li><a href="#">General</a></li>
+                        <li><a href="">En savoir plus</a></li>
                         <li><a href="#" class="icon fa-heart">28</a></li>
-                        <li><a href="#" class="icon fa-comment">128</a></li>
                     </ul>
                 </footer>
             </article>
             {% endfor %}
-
         </div>
 
         <!-- Footer -->
@@ -102,7 +38,4 @@
             </ul>
             <p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a href="http://unsplash.com">Unsplash</a>.</p>
         </section>
-
-    </div>
-    </body>
 {% endblock %}
