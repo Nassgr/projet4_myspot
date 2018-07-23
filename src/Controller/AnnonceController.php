@@ -37,12 +37,22 @@ class AnnonceController extends Controller
             $em->persist($annonce);
             $em->flush();
 
-            return $this->redirectToRoute('annonce_admin_index');
+            return $this->redirectToRoute('index');
         }
 
         return $this->render('annonce/public/createAnnonce.html.twig', [
             'annonce' => $annonce,
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="annonce_show", methods="GET")
+     */
+    public function show(Annonce $annonce): Response
+    {
+        return $this->render('annonce/public/show.html.twig', [
+            'annonce' => $annonce
         ]);
     }
 

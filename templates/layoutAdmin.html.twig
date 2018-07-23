@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block header %}
+    {% include 'navbarAdmin.html.twig' %}
+{% endblock %}
 {% block body %}
-    Bienvenue {{ app.user.username }} !
-
+    <div class="container mt-5">
+        Bienvenue dans la partie administrateur {{ app.user.username }} !
+    </div>
 {% endblock %}

@@ -1,17 +1,29 @@
 {% extends 'layout.html.twig' %}
+    {% block header %}
+        {% include 'navbar.html.twig' %}
+    {% endblock %}
 {% block body %}
     <body class="single is-preload">
-
+    <div class="container-fluid">
+        <div class="row">
+            <div class="homepage-picture">
+                <h1 class="homepage-title">My Spot</h1>
+            </div>
+            <div class="recherche">
+                <form action="" id="searchthis" method="get">
+                    <input class="top-search" id="search" name="q" type="text" placeholder="Rechercher votre costume" />
+                    <input id="search-btn" type="submit" value="Rechercher" />
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- Wrapper -->
     <div id="wrapper">
-        {% block header %}
-            {% include 'navbar.html.twig' %}
-        {% endblock %}
         <!-- Menu -->
         <section id="menu">
             <!-- Search -->
-            <section>
-                <form class="search" method="get" action="#">
+            <section class="document" id="element">
+                <form class="search document" method="get" action="#">
                     <input type="text" name="query" placeholder="Rechercher" />
                 </form>
             </section>
@@ -52,28 +64,27 @@
                     <li><a href="{{ path('user_registration') }}" class="button large fit">S'inscrire</a></li>
                 </ul>
             </section>
+
         </section>
 
         <!-- Main -->
         <div id="main">
             {% for annonce in annonces %}
-                <!-- Post -->
-                <div class="row">
-                    <article class="post">
-                        <header>
-                            <div class="title">
-                                <h2><a href="{{ path('annonce_show', {'id': annonce.id}) }}">{{ annonce.title }}</a></h2>
-                                <p>{{ annonce.categorie }}</p>
-                            </div>
-                            <div class="meta">
-                                <time class="published" datetime="2015-11-01">November 1, 2015</time>
-                                <a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
-                            </div>
-                        </header>
-                        <span class="image featured"><img href="{{ path('annonce_show', {'id': annonce.id}) }}" src="{{ vich_uploader_asset(annonce, 'imageFile') }}" alt="photo de l'annonce" /></span>
-                        <p>{{ annonce.description }} </p>
-                    </article>
-                </div>
+            <!-- Post -->
+            <article class="post">
+                <header>
+                    <div class="title">
+                        <h2><a href="#">{{ annonce.title }}</a></h2>
+                        <p>{{ annonce.categorie }}</p>
+                    </div>
+                    <div class="meta">
+                        <time class="published" datetime="2015-11-01">November 1, 2015</time>
+                        <a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
+                    </div>
+                </header>
+                <span class="image featured"><img src="{{ vich_uploader_asset(annonce, 'imageFile') }}" alt="description de l'annonce" /></span>
+                <p>{{ annonce.description }} </p>
+            </article>
             {% endfor %}
         </div>
         {% block footer %}

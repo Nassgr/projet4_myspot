@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+{% block body %}
+<!-- Main -->
+<div id="main">
+        <!-- Post -->
+        <div class="row">
+            <article class="post">
+                <header>
+                    <div class="title">
+                        <h2><a href="{{ path('annonce_show', {'id': annonce.id}) }}">{{ annonce.title }}</a></h2>
+                        <p>{{ annonce.categorie }}</p>
+                    </div>
+                    <div class="meta">
+                        <time class="published" datetime="2015-11-01">November 1, 2015</time>
+                        <a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
+                    </div>
+                </header>
+                <span class="image featured"><img href="{{ path('annonce_show', {'id': annonce.id}) }}" src="{{ vich_uploader_asset(annonce, 'imageFile') }}" alt="photo de l'annonce" /></span>
+                <p>{{ annonce.description }} </p>
+            </article>
+        </div>
+</div>
+{% endblock %}
