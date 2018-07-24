@@ -1,23 +1,29 @@
 {% extends 'layout.html.twig' %}
 {% block body %}
-<!-- Main -->
-<div id="main">
-        <!-- Post -->
+    <!-- Main -->
+    <div id="main">
         <div class="row">
-            <article class="post">
-                <header>
-                    <div class="title">
-                        <h2><a href="{{ path('annonce_show', {'id': annonce.id}) }}">{{ annonce.title }}</a></h2>
-                        <p>{{ annonce.categorie }}</p>
+                <div class="card-deck col-md-4 col-sm-12">
+                    <!-- Card -->
+                    <div class="card mb-4">
+                        <!--Card image-->
+                        <div class="view overlay">
+                            <a href="{{ path('annonce_show', {'id': annonce.id}) }}">
+                                <img class="card-img-top" src="{{ vich_uploader_asset(annonce, 'imageFile') }}" alt="{{ annonce.title }}">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+                        <!--Card content-->
+                        <div class="card-body">
+                            <!--Title-->
+                            <h4 class="card-title">{{ annonce.title }}</h4>
+                            <h4 class="card-text">{{ annonce.description }}</h4>
+                            <p class="price">{{ annonce.price }}€</p>
+                            <p class="card-city"><i class="fas fa-map-marker-alt"></i> {{ annonce.city }}</p>
+                        </div>
                     </div>
-                    <div class="meta">
-                        <time class="published" datetime="2015-11-01">November 1, 2015</time>
-                        <a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
-                    </div>
-                </header>
-                <span class="image featured"><img href="{{ path('annonce_show', {'id': annonce.id}) }}" src="{{ vich_uploader_asset(annonce, 'imageFile') }}" alt="photo de l'annonce" /></span>
-                <p>{{ annonce.description }} </p>
-            </article>
+                    <!-- Card -->
+                </div>
         </div>
-</div>
+    </div>
 {% endblock %}

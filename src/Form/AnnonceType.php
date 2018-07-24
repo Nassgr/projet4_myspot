@@ -22,11 +22,15 @@ class AnnonceType extends AbstractType
                 'label' => 'Catégorie',
                 'placeholder' => 'Choisissez une catégorie',
                 'choices' => array(
-                        'Voitures' => 'Voiture',
-                        'Vêtements' => 'Vetements',
-                        'Téléphonie' => 'Telephone',
-                        'Informatique' => 'Informatique',
-                        'Console & Jeux vidéos' => 'Console',)
+                        'Costume 2 pièces' => 'Costume 2 pièces',
+                        'Costume 3 pièces' => 'Costume 3 pièces',
+                        'Veste' => 'Veste',
+                        'Pantalon' => 'Pantalon',
+                        'Gilet' => 'Gilet',
+                        'Cravate' => 'Cravate',
+                        'Boutons Manchettes' => 'Boutons Manchettes',
+                        'Montre' => 'Montre',
+                        'Chaussure' => 'Chaussure',)
             ))
             ->add('type', ChoiceType::class, array(
                 'label' => 'Vous êtes un :',

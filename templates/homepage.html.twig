@@ -10,10 +10,10 @@
                 <h1 class="homepage-title">My Spot</h1>
             </div>
             <div class="recherche">
-                <form action="" id="searchthis" method="get">
-                    <input class="top-search" id="search" name="q" type="text" placeholder="Rechercher votre costume" />
+                {{ form_start(form) }}
+                {{ form_row(form.title, {'attr': {'class': 'form-inline'}}) }}
                     <input id="search-btn" type="submit" value="Rechercher" />
-                </form>
+                {{ form_end(form) }}
             </div>
         </div>
     </div>
@@ -28,36 +28,6 @@
                 </form>
             </section>
 
-            <!-- Links -->
-            <section>
-                <ul class="links">
-                    <li>
-                        <a href="#">
-                            <h3>Lorem ipsum</h3>
-                            <p>Feugiat tempus veroeros dolor</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <h3>Dolor sit amet</h3>
-                            <p>Sed vitae justo condimentum</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <h3>Feugiat veroeros</h3>
-                            <p>Phasellus sed ultricies mi congue</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <h3>Etiam sed consequat</h3>
-                            <p>Porta lectus amet ultricies</p>
-                        </a>
-                    </li>
-                </ul>
-            </section>
-
             <!-- Actions -->
             <section>
                 <ul class="actions stacked">
@@ -69,24 +39,33 @@
 
         <!-- Main -->
         <div id="main">
-            {% for annonce in annonces %}
-            <!-- Post -->
-            <article class="post">
-                <header>
-                    <div class="title">
-                        <h2><a href="#">{{ annonce.title }}</a></h2>
-                        <p>{{ annonce.categorie }}</p>
-                    </div>
-                    <div class="meta">
-                        <time class="published" datetime="2015-11-01">November 1, 2015</time>
-                        <a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
-                    </div>
-                </header>
-                <span class="image featured"><img src="{{ vich_uploader_asset(annonce, 'imageFile') }}" alt="description de l'annonce" /></span>
-                <p>{{ annonce.description }} </p>
-            </article>
-            {% endfor %}
-        </div>
+            <div class="row">
+                    {% for annonce in annonces %}
+                        <!-- Card deck -->
+                        <div class="card-deck col-md-3 col-sm-12">
+                            <!-- Card -->
+                            <div class="card mb-4">
+                                <!--Card image-->
+                                <div class="view overlay">
+                                    <a href="{{ path('annonce_show', {'id': annonce.id}) }}">
+                                    <img class="card-img-top" src="{{ vich_uploader_asset(annonce, 'imageFile') }}" alt="{{ annonce.title }}">
+                                        <div class="mask rgba-white-slight"></div>
+                                    </a>
+                                </div>
+                                <!--Card content-->
+                                <div class="card-body">
+                                    <!--Title-->
+                                    <h4 class="card-title">{{ annonce.title }}</h4>
+                                    <p class="price">{{ annonce.price }}€</p>
+                                    <p class="card-city"><i class="fas fa-map-marker-alt"></i> {{ annonce.city }}</p>
+                                </div>
+                            </div>
+                            <!-- Card -->
+                        </div>
+                        <!-- Card deck -->
+                    {% endfor %}
+                </div>
+            </div>
         {% block footer %}
             {% include 'footer.html.twig' %}
         {% endblock %}

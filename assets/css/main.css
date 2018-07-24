@@ -201,9 +201,6 @@ em, i {
     font-style: italic;
 }
 
-p {
-    margin: 0 0 2em 0;
-}
 
 h1, h2, h3, h4, h5, h6 {
     color: #3c3b3b;
@@ -3625,4 +3622,25 @@ body.is-menu-visible #menu {
 #search-btn {
     margin-top: 20px;
     background-color: whitesmoke;
+}
+
+.card-img-top {
+    max-height: 300px;
+    min-height: 300px;
+    object-fit: cover;
+    border-bottom: 20px solid dimgray;
+}
+
+.price {
+    font-size: 1.2em;
+}
+
+.card-title {
+    font-size: 0.9em;
+}
+
+.card-city {
+    font-size: 0.8em;
+    color: #2ebaae;
+    margin-top: 5px;
 }
