@@ -9,12 +9,6 @@
             <div class="homepage-picture">
                 <h1 class="homepage-title">My Spot</h1>
             </div>
-            <div class="recherche">
-                {{ form_start(form) }}
-                {{ form_row(form.title, {'attr': {'class': 'form-inline'}}) }}
-                    <input id="search-btn" type="submit" value="Rechercher" />
-                {{ form_end(form) }}
-            </div>
         </div>
     </div>
     <!-- Wrapper -->
@@ -39,6 +33,14 @@
 
         <!-- Main -->
         <div id="main">
+            <div class="row">
+                <div class="recherche">
+                    {{ form_start(form) }}
+                    {{ form_row(form.title, {'attr': {'class': 'home-search form-control bg-light'}}) }}
+                    <input class="search-btn" type="submit" value="Rechercher" />
+                    {{ form_end(form) }}
+                </div>
+            </div>
             <div class="row">
                     {% for annonce in annonces %}
                         <!-- Card deck -->
@@ -67,7 +69,7 @@
                 </div>
             </div>
         <nav aria-label="Page navigation example">
-            <ul class="pagination">
+            <ul class="pagination justify-content-center">
                 <li class="page-item"><a class="page-link" href="{{ path('index', {'page' : page - 1 , 'title' : title}) }}">Previous</a></li>
                 <li class="page-item"><a class="page-link" href="{{ path('index', {'page' : 1, 'title' : title}) }}">1</a></li>
                 <li class="page-item"><a class="page-link" href="{{ path('index', {'page' : 2, 'title' : title}) }}">2</a></li>
