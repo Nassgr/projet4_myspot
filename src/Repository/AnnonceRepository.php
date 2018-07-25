@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Annonce;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -19,17 +20,17 @@ class AnnonceRepository extends ServiceEntityRepository
         parent::__construct($registry, Annonce::class);
     }
 
-    /**
-    * @return Annonce[] Returns an array of Annonce objects
-    */
-    public function findByLike($value)
+    public function findByLike($value, $nbAnnonces, int $nbPage = 16)
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.title LIKE :val')
-            ->setParameter('val', "%$value%")
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult();
+            $query = $this->createQueryBuilder('a')
+                ->andWhere('a.title LIKE :val')
+                ->setParameter('val', "%$value%")
+                ->setMaxResults($nbPage)
+                ->setFirstResult($nbAnnonces);
+
+            $paginator = new Paginator($query);
+
+            return $paginator;
     }
 
     /*

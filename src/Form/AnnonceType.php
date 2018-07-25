@@ -54,7 +54,7 @@ class AnnonceType extends AbstractType
             ))
             ->add('imageFile', VichImageType::class, array(
                 'label' => 'Photo de votre produit',
-                'required' =>false,
+                'required' =>true,
             ));
     }
 

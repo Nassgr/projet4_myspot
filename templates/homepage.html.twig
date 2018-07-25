@@ -66,6 +66,14 @@
                     {% endfor %}
                 </div>
             </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="{{ path('index', {'page' : page - 1 , 'title' : title}) }}">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="{{ path('index', {'page' : 1, 'title' : title}) }}">1</a></li>
+                <li class="page-item"><a class="page-link" href="{{ path('index', {'page' : 2, 'title' : title}) }}">2</a></li>
+                <li class="page-item"><a class="page-link" href="{{ path('index', {'page' : page + 1, 'title' : title}) }}">Next</a></li>
+            </ul>
+        </nav>
         {% block footer %}
             {% include 'footer.html.twig' %}
         {% endblock %}
