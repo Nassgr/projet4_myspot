@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'layoutAdmin.html.twig' %}
 
-{% block title %}Edit Annonce{% endblock %}
+{% block title %}Modifier l'annonce{% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container mt-3">
     <h1>Modifier/Supprimer une annonce</h1>
 
     {{ include('annonce/_form.html.twig', {'button_label': 'Update'}) }}

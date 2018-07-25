@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+{% block body %}
+    <!-- Main -->
+    <div id="main">
+        <div class="row">
+                <div class="card-deck col-md-4 col-sm-12">
+                    <!-- Card -->
+                    <div class="card mb-4">
+                        <!--Card image-->
+                        <div class="view overlay">
+                            <a href="{{ path('annonce_show', {'id': annonce.id}) }}">
+                                <img class="card-img-top" src="{{ vich_uploader_asset(annonce, 'imageFile') }}" alt="{{ annonce.title }}">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+                        <!--Card content-->
+                        <div class="card-body">
+                            <!--Title-->
+                            <h4 class="card-title">{{ annonce.title }}</h4>
+                            <h4 class="card-text">{{ annonce.description }}</h4>
+                            <p class="price">{{ annonce.price }}€</p>
+                            <p class="card-city"><i class="fas fa-map-marker-alt"></i> {{ annonce.city }}</p>
+                        </div>
+                    </div>
+                    <!-- Card -->
+                </div>
+        </div>
+    </div>
+{% endblock %}
